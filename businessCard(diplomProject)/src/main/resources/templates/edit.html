@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:background-color="http://java.sun.com/JSP/Page"
+      xmlns:align-content="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение данных</title>
+</head>
+<body style="background-color: black">
+<h1 style="text-align:center; color:white;">Редактирование данных.</h1>
+<br />
+<form action="/">
+    <button>
+        На главную страницу.
+    </button>
+</form>
+<br>
+<div style="width: 50%; float: left;">
+<h2 style="color:white">Добавление новых данных о месте работы:</h2>
+<form action="/edit" method="post" style="color:white">
+    Название компании: <input type="text" name="jobName"><br />
+    <div style="text-align:left; color:white;"> Информация о компании:</div>  <textarea cols="40" rows="10" type="text" name="jobInfo"></textarea><br />
+    Должность: <input type="text" name="jobPosition"><br />
+    Рабочие проекты: <input type="text" name="jobProject"><br />
+    <div style="text-align:left; color:white;"> Должностные обязанности:</div>  <textarea cols="40" rows="10" type="text" name="jobResponsibilities"></textarea><br />
+    <br />
+    <button type="submit">Добавить</button>
+    </form>
+</div>
+<div style="width: 50%; float: left;">
+<h2 style="color:white">Добавление новых ссылок:</h2>
+<form action="/edit" method="post" style="color:white">
+    E-mail: <input type="email" name="email"><br />
+    Ссылка на соцсеть: <input type="text" name="socSeti" value="https://"><br />
+    Ссылка на GitHub: <input type="text" name="gitHub" value="https://"><br /><br />
+    <button type="submit">Добавить</button>
+</form>
+</div>
+<div style="clear: both; padding: 20px 0 0 60px;">
+<form action="/delete">
+    <button style="background-color: brown; border-style: solid; border-color: white">
+        Удалить всю информацию.
+    </button>
+</form>
+</div>
+</body>
+</html>

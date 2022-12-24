@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Моя Визитка</title>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        a:link{
+            color: cornflowerblue;
+        }
+        a:visited{
+            color: red;
+        }
+        a:hover{
+            color: moccasin;
+            text-decoration: underline overline yellow;
+        }
+        a:active{
+            color: lime;
+        }
+        .scale{
+            transition: 1s;
+        }
+        .scale:hover{
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body style="background-color: black">
+<h1 style="text-align:center; color:white">Моя Визитка</h1>
+
+<form action="/registration">
+    <button th:disabled="${userExist}">
+        Регистрация
+    </button>
+</form>
+<br>
+<form action="/login">
+    <button th:disabled="${condition}">
+        Изменение данных
+    </button>
+</form>
+<br>
+
+<table>
+    <tr>
+    <h2 style="color:white; padding-left: 40px;">О себе:</h2>
+    </tr>
+    <tr th:each="i: ${index}">
+       <td> <a target="_blank"  th:if="${not i.pic.equals('null')}" th:href="${i.pic}"><img th:each="i: ${index}" th:src="${i.pic}" style="height: 150px; padding-left: 10px;" class="scale"></a></td>
+    </tr>
+    <tr>
+        <th style="text-align:left; color: bisque;">Имя: </th>
+        <td th:each="i: ${index}" style="color:white" th:if="${not i.name.equals('null')}" th:text="${i.name}"></td>
+    </tr>
+    <tr>
+        <th style="text-align:left; color:bisque">Возраст: </th>
+        <td th:each="i: ${index}" style="color:white" th:if="${i.age!=0}"  th:text="${i.age}"></td>
+    </tr>
+    <tr>
+        <th style="text-align:left;color:bisque">Город проживания: </th>
+        <td th:each="i: ${index}" style="color:white" th:if="${not i.city.equals('null')}" th:text="${i.city}"></td>
+    </tr>
+    <tr>
+        <th style="text-align:left; color:bisque;">Номер телефона: </th>
+        <td th:each="i: ${index}" style="color:white" th:if="${not i.phoneNumber.equals('null')}" th:text="${i.phoneNumber}"></td>
+    </tr>
+
+</table>
+<br>
+<h2 style=" color:white">Ссылки:</h2>
+<table style="float: left; clear: right">
+    <tr>
+        <th style="text-align:left; color:bisque; width: 300px">E-mail:</th>
+    </tr>
+    <tr th:each="i: ${index}">
+        <td style="color:white" th:type="action" th:if="${not i.email.equals('')}" th:text="${i.email}"></td>
+    </tr>
+</table>
+<table style="float: left">
+    <tr>
+        <th style="text-align:left; color:bisque; width: 300px">Ссылка на соцсеть:</th>
+    </tr>
+    <tr th:each="i: ${index}">
+        <td style="color:white"><a target="_blank" th:if="${not i.socSeti.equals('https://')}" th:href="${i.socSeti}" th:text="${i.socSeti}"></a> </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th style="text-align:left;color:bisque; width: 300px">Ссылка на GitHub:</th>
+    </tr>
+    <tr th:each="i: ${index}">
+        <td style="color:white"><a target="_blank" th:if="${not i.gitHub.equals('https://')}" th:href="${i.gitHub}" th:text="${i.gitHub}"></a> </td>
+    </tr>
+</table>
+<br>
+<br>
+
+<table>
+    <tr><h2 style="text-align: left; color:white">Опыт работы:</h2></tr>
+    <tr>
+        <th style="text-align:left; color:bisque; width: 180px">Название компании:     </th>
+        <th style="text-align:left; color:bisque; width: 350px"> Информация о компании:     </th>
+        <th style="text-align:left; color:bisque; width: 180px">Должность:     </th>
+        <th style="text-align:left; color:bisque; width: 250px">Рабочие проекты:    </th>
+        <th style="text-align:left; color:bisque; width: 280px">Должностные обязанности:    </th>
+    </tr>
+    <tr th:each="i: ${index}">
+
+        <td style="color:white" th:if="${not i.jobName.equals('null')}" th:text="${not i.jobName.equals('')} ? ${i.jobName} : 'НЕ ЗАПОЛНЕНО'"></td>
+        <td style="color:white" th:if="${not i.jobInfo.equals('null')}" th:text="${not i.jobInfo.equals('')} ? ${i.jobInfo} : 'НЕ ЗАПОЛНЕНО'"></td>
+        <td style="color:white" th:if="${not i.jobPosition.equals('null')}" th:text="${not i.jobPosition.equals('')} ? ${i.jobPosition} : 'НЕ ЗАПОЛНЕНО'"></td>
+        <td style="color:white" th:if="${not i.jobProject.equals('null')}" th:text="${not i.jobProject.equals('')} ? ${i.jobProject} : 'НЕ ЗАПОЛНЕНО'"></td>
+        <td style="color:white" th:if="${not i.jobResponsibilities.equals('null')}" th:text="${not i.jobResponsibilities.equals('')} ? ${i.jobResponsibilities} : 'НЕ ЗАПОЛНЕНО'"></td>
+    </tr>
+
+
+</table>
+</body>
+</html>
